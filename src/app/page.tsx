@@ -15,7 +15,7 @@ export default function Home() {
           </Avatar>
         </div>
         <h2 className="text-2xl font-semibold text-center">Chats</h2>
-        <Edit className="w-6 h-6" />
+        <Edit className="w-6 h-6 cursor-pointer" />
       </header>
       <div>
         <div>

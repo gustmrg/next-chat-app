@@ -6,13 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Send } from "lucide-react";
 
-export default function ChatApp() {
+export default function Chat() {
   const [selectedUser, setSelectedUser] = useState(users[1]);
   const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState("");
 
-  const currentUserId = "1"; // Assuming the current user is Alice
+  const currentUserId = "1";
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ export default function ChatApp() {
       };
       setMessages([...messages, newMessage]);
       setInput("");
+      setSelectedUser(users[1]);
     }
   };
 
@@ -37,49 +39,6 @@ export default function ChatApp() {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* User list */}
-      <div className="w-1/5 bg-white border-r">
-        <div>
-          <h2 className="font-bold text-2xl ml-3 p-6">Chats</h2>
-        </div>
-        <ScrollArea className="h-full">
-          {users
-            .filter((u) => u.id !== currentUserId)
-            .map((user) => (
-              <div
-                key={user.id}
-                className={`flex items-center p-4 cursor-pointer hover:bg-gray-100 ${
-                  selectedUser.id === user.id ? "bg-gray-200" : ""
-                }`}
-                onClick={() => setSelectedUser(user)}
-              >
-                <Avatar className="w-10 h-10 mr-3">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback>
-                    {user.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-semibold">{user.name}</p>
-                  <p className="text-sm text-gray-500">
-                    {messages
-                      .filter(
-                        (m) =>
-                          m.senderId === user.id || m.receiverId === user.id
-                      )
-                      .slice(-1)[0]
-                      ?.content.substring(0, 20)}
-                    ...
-                  </p>
-                </div>
-              </div>
-            ))}
-        </ScrollArea>
-      </div>
-
       {/* Chat window */}
       <div className="flex-1 flex flex-col">
         {/* Chat header */}
@@ -115,9 +74,6 @@ export default function ChatApp() {
                 }`}
               >
                 {message.content}
-                <div className="text-xs mt-1 text-gray-400">
-                  {new Date(message.timestamp).toLocaleTimeString()}
-                </div>
               </div>
             </div>
           ))}
@@ -135,7 +91,7 @@ export default function ChatApp() {
             className="flex-grow mr-2"
           />
           <Button type="submit" className="bg-blue-500">
-            Send
+            <Send />
           </Button>
         </form>
       </div>
