@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Send } from "lucide-react";
+import { ChevronLeft, Send } from "lucide-react";
+import Link from "next/link";
 
 export default function Chat() {
   const [selectedUser, setSelectedUser] = useState(users[1]);
@@ -43,6 +44,9 @@ export default function Chat() {
       <div className="flex-1 flex flex-col">
         {/* Chat header */}
         <div className="bg-white p-4 border-b flex items-center">
+          <Link href="/" className="mr-4">
+            <ChevronLeft />
+          </Link>
           <Avatar className="w-10 h-10 mr-3">
             <AvatarImage src={selectedUser.avatar} alt={selectedUser.name} />
             <AvatarFallback>
