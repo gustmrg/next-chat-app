@@ -83,6 +83,7 @@ export default function Chat() {
         <form
           onSubmit={handleSendMessage}
           className="bg-white p-4 border-t flex"
+          style={{ position: "sticky", bottom: 0 }}
         >
           <Input
             value={input}
