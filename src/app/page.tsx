@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Cog, Edit, MessageCircle, Users } from "lucide-react";
+import { Cog, Edit, MessageCircle, Settings, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -129,7 +129,10 @@ export default function Home() {
         style={{ position: "fixed", bottom: 0 }}
       >
         <Button size="lg" className="bg-transparent flex flex-col mx-2">
-          <MessageCircle style={{ height: "1.5rem", width: "1.5rem" }} />
+          <MessageCircle
+            fill="white"
+            style={{ height: "1.5rem", width: "1.5rem" }}
+          />
           <span className="font-semibold text-xs">Chats</span>
         </Button>
         <Button size="lg" className="bg-transparent flex flex-col mx-2">
@@ -137,7 +140,7 @@ export default function Home() {
           <span className="font-semibold text-xs">Contacts</span>
         </Button>
         <Button size="lg" className="bg-transparent flex flex-col mx-2">
-          <Cog style={{ height: "1.5rem", width: "1.5rem" }} />
+          <Settings style={{ height: "1.5rem", width: "1.5rem" }} />
           <span className="font-semibold text-xs">Settings</span>
         </Button>
       </div>
