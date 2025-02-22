@@ -125,7 +125,7 @@ export default function Home() {
         </ScrollArea>
       </main>
       <div
-        className="bg-blue-600 p-4 border-t flex justify-between w-full"
+        className="bg-blue-500 p-4 border-t flex justify-between w-full"
         style={{ position: "fixed", bottom: 0 }}
       >
         <Button size="lg" className="bg-transparent flex flex-col mx-2">
