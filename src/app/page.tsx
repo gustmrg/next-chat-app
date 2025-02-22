@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Cog, Edit, MessageCircle, Settings, Users } from "lucide-react";
+import { Edit, MessageCircle, Settings, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
