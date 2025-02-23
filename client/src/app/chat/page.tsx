@@ -1,10 +1,8 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { getUserId } from "@/lib/signalr";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ChevronLeft, Send } from "lucide-react";
 import {
   HttpTransportType,
   HubConnection,
@@ -12,9 +10,11 @@ import {
   HubConnectionState,
   LogLevel,
 } from "@microsoft/signalr";
-import { ChevronLeft, Send } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 type Message = {
   senderId: string;
@@ -26,7 +26,19 @@ export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const [connection, setConnection] = useState<HubConnection | null>(null);
-  const userId = getUserId();
+  const [userId, setUserId] = useState<string>();
+
+  useEffect(() => {
+    let userId = sessionStorage.getItem("userId");
+
+    if (userId) {
+      setUserId(userId);
+    } else {
+      userId = crypto.randomUUID();
+      sessionStorage.setItem("userId", userId);
+      setUserId(userId);
+    }
+  }, []);
 
   useEffect(() => {
     const connect = new HubConnectionBuilder()
